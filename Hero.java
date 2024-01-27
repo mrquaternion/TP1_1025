@@ -5,7 +5,7 @@ public class Hero {
     private int health, maxHealth;
     private int level = 1;
     private int experience = 0;
-
+    //Test
 
     // Constructeur
     public Hero(int health, int maxHealth, int level, int experience) {

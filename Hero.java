@@ -5,7 +5,7 @@ public class Hero {
     private int health, maxHealth;
     private int level = 1;
     private int experience = 0;
-    //Test
+
 
     // Constructeur
     public Hero(int health, int maxHealth, int level, int experience) {
@@ -26,7 +26,7 @@ public class Hero {
     }
 
     public int getLevel() {
-        return this.level;
+        return this.miseNiveau(level);
     }
 
     public int getExperience() {
@@ -36,19 +36,36 @@ public class Hero {
     
     // Setters
 
+
     // Autres méthodes
-    private int miseNiveau() {
-        if (experience == pointExperience()) {
+    private int miseNiveau(int level) {
+        if (experience >= pointExperience(level)) {
+            this.experience = experience - pointExperience(level); // ***Le hero peut avoir plus que le max de pointExperience()?***
             this.level = level + 1;
         }
-
         return this.level;
     }
 
-    private double pointExperience() {
-        double exp_requis;
-        exp_requis = 50 + (this.level + 1) * 20 * Math.pow(1.1, this.level + 1);
-
+    private int pointExperience(int level) {
+        int exp_requis = (int)((50 + (this.level + 1) * 20 * Math.pow(1.1, this.level + 1)) + 1); // Pour prendre l'entier supérieur, on ajoute 1 au résultat
+                                                                                                    // et on cast un int sur cette addition (cela va tronquer)
         return exp_requis;
+    }
+
+    // Méthodes action
+    private String fighting() {
+
+    }
+
+    private String resting() {
+        
+    }
+
+    private String healing() {
+        
+    }
+
+    private String training() {
+        
     }
 }

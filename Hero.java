@@ -15,9 +15,10 @@ public class Hero {
         this.experience = experience;
     }
 
-
+//fctrtctcfcftcfttc
     // Getters
     public int getHealth() {
+        this.health = 2;
         return this.health;
     }
 

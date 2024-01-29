@@ -11,14 +11,12 @@ public class Hero {
     public Hero(int health, int maxHealth, int level, int experience) {
         this.health = health;
         this.maxHealth = maxHealth;
-        this.level = level+2;
+        this.level = level;
         this.experience = experience;
     }
 
-//fctrtctcfcftcfttc
     // Getters
     public int getHealth() {
-        this.health = 2;
         return this.health;
     }
 

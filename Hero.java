@@ -52,6 +52,7 @@ public class Hero {
     }
 
     // Méthodes action
+    /* 
     private String fighting() {
         
     }
@@ -67,4 +68,5 @@ public class Hero {
     private String training() {
         
     }
+    */
 }

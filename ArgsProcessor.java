@@ -3,20 +3,21 @@ public class ArgsProcessor {
         String[] phrase = makePhrase(args[0]);
         Hero hero; // ???
         String nom = phrase[0];
-        System.out.println(phrase[1]);
+        System.out.println(2 + Integer.parseInt(phrase[1]));
         
         switch (nom.charAt(0)) {
             case 'A':
-                hero = new Hero(Integer.parseInt(phrase[1]), Integer.parseInt(phrase[1]), Integer.parseInt(phrase[2])); // A changer c'est juste pour avoir un héro test.
+                hero = new HeroAttaque(Integer.parseInt(phrase[1]), Integer.parseInt(phrase[1]), Integer.parseInt(phrase[2])); // A changer c'est juste pour avoir un héro test.
                 break;
-            case 'B':
-                hero = new Hero(Integer.parseInt(phrase[1]), Integer.parseInt(phrase[1]), Integer.parseInt(phrase[2])); // A changer c'est juste pour avoir un héro test.
+            case 'D':
+                hero = new HeroDefense(Integer.parseInt(phrase[1]), Integer.parseInt(phrase[1]), Integer.parseInt(phrase[2])); // A changer c'est juste pour avoir un héro test.
                 break;
             default:
-                hero = new Hero(Integer.parseInt(phrase[1]), Integer.parseInt(phrase[1]), Integer.parseInt(phrase[2])); // A changer c'est juste pour avoir un héro test.
+                hero = new HeroEquilibre(Integer.parseInt(phrase[1]), Integer.parseInt(phrase[1]), Integer.parseInt(phrase[2])); // A changer c'est juste pour avoir un héro test.
                 break;
         }
         System.out.println(hero.getHealth());
+        doAction(phrase[3], hero);
         /* 
         for (int i = 3; i < phrase.length; i++){
             doAction(phrase[i], hero);
@@ -40,7 +41,7 @@ public class ArgsProcessor {
         switch (phrase[0]) {
             case "fought":
                 //TODO : Handle the fight
-                
+                System.out.println(phrase[1]);
                 break;
             case "rested":
                 //TODO : Handle the resting
@@ -55,8 +56,5 @@ public class ArgsProcessor {
         return true;
     }
 
-    private static void choixType(String[] phrase){
-        
-    }
 }
 

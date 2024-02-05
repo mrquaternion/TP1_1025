@@ -1,6 +1,6 @@
 import java.lang.Math;
 
-public class Hero {
+public  class Hero {
     // Attributs privés
     private int health, maxHealth;
     private int pointsAtq;

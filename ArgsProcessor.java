@@ -1,24 +1,23 @@
 public class ArgsProcessor {
     public static void process(String[] args) {
         String[] phrase = makePhrase(args[0]);
-        Hero hero; // ???
+        Hero hero;
         String nom = phrase[0];
-        System.out.println(2 + Integer.parseInt(phrase[1]));
-        
         switch (nom.charAt(0)) {
             case 'A':
                 hero = new HeroAttaque(Integer.parseInt(phrase[1]), Integer.parseInt(phrase[1]), Integer.parseInt(phrase[2])); // A changer c'est juste pour avoir un héro test.
                 break;
             case 'D':
-                hero = new HeroDefense(Integer.parseInt(phrase[1]), Integer.parseInt(phrase[1]), Integer.parseInt(phrase[2])); // A changer c'est juste pour avoir un héro test.
+                 hero = new HeroDefense(Integer.parseInt(phrase[1]), Integer.parseInt(phrase[1]), Integer.parseInt(phrase[2])); // A changer c'est juste pour avoir un héro test.
                 break;
             default:
-                hero = new HeroEquilibre(Integer.parseInt(phrase[1]), Integer.parseInt(phrase[1]), Integer.parseInt(phrase[2])); // A changer c'est juste pour avoir un héro test.
+                 hero = new HeroEquilibre(Integer.parseInt(phrase[1]), Integer.parseInt(phrase[1]), Integer.parseInt(phrase[2])); // A changer c'est juste pour avoir un héro test.
                 break;
         }
+                
         System.out.println(hero.getHealth());
         doAction(phrase[3], hero);
-        /* 
+        /* ça marche pas 
         for (int i = 3; i < phrase.length; i++){
             doAction(phrase[i], hero);
         }
@@ -41,7 +40,10 @@ public class ArgsProcessor {
         switch (phrase[0]) {
             case "fought":
                 //TODO : Handle the fight
-                System.out.println(phrase[1]);
+                /* 
+                for (int i = 0; i < Integer.parseInt(phrase[1]); i++){
+                   
+                }*/
                 break;
             case "rested":
                 //TODO : Handle the resting

@@ -1,8 +1,31 @@
 public class ArgsProcessor {
     public static void process(String[] args) {
         String[] phrase = makePhrase(args[0]);
-        //TODO : Handle the phrase and output the result
+        Hero hero; // ???
+        String nom = phrase[0];
+        System.out.println(phrase[1]);
+        
+        switch (nom.charAt(0)) {
+            case 'A':
+                hero = new Hero(Integer.parseInt(phrase[1]), Integer.parseInt(phrase[1]), Integer.parseInt(phrase[2])); // A changer c'est juste pour avoir un héro test.
+                break;
+            case 'B':
+                hero = new Hero(Integer.parseInt(phrase[1]), Integer.parseInt(phrase[1]), Integer.parseInt(phrase[2])); // A changer c'est juste pour avoir un héro test.
+                break;
+            default:
+                hero = new Hero(Integer.parseInt(phrase[1]), Integer.parseInt(phrase[1]), Integer.parseInt(phrase[2])); // A changer c'est juste pour avoir un héro test.
+                break;
+        }
+        System.out.println(hero.getHealth());
+        /* 
+        for (int i = 3; i < phrase.length; i++){
+            doAction(phrase[i], hero);
+        }
+        */
+        
     }
+        //TODO : Handle the phrase and output the result
+    
 
     private static String[] makePhrase(String args) {
         return args.trim().split(",");
@@ -17,6 +40,7 @@ public class ArgsProcessor {
         switch (phrase[0]) {
             case "fought":
                 //TODO : Handle the fight
+                
                 break;
             case "rested":
                 //TODO : Handle the resting
@@ -31,4 +55,8 @@ public class ArgsProcessor {
         return true;
     }
 
+    private static void choixType(String[] phrase){
+        
+    }
 }
+

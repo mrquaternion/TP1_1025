@@ -3,16 +3,16 @@ import java.lang.Math;
 public class Hero {
     // Attributs privés
     private int health, maxHealth;
-    private int pointsAtq;
+    private int pointsAttaque;
     private int level = 1;
     private int experience = 0;
     
 
     // Constructeur
-    public Hero(int health, int maxHealth,int pointsAtq) {
+    public Hero(int health, int maxHealth, int pointsAttaque) {
         this.health = health;
         this.maxHealth = maxHealth;
-        this.pointsAtq = pointsAtq;
+        this.pointsAttaque = pointsAttaque;
     }
 
     // Getters

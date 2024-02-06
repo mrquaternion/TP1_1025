@@ -9,7 +9,7 @@ public class ArgsProcessor {
             case 'A':
                 hero = new Hero(Integer.parseInt(phrase[1]), Integer.parseInt(phrase[1]), Integer.parseInt(phrase[2])); // A changer c'est juste pour avoir un héro test.
                 break;
-            case 'B':
+            case 'D':
                 hero = new Hero(Integer.parseInt(phrase[1]), Integer.parseInt(phrase[1]), Integer.parseInt(phrase[2])); // A changer c'est juste pour avoir un héro test.
                 break;
             default:
@@ -53,10 +53,6 @@ public class ArgsProcessor {
                 break;
         }
         return true;
-    }
-
-    private static void choixType(String[] phrase){
-        
     }
 }
 

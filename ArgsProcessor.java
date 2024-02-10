@@ -15,6 +15,7 @@ public class ArgsProcessor {
                 hero = new HeroEquilibre(Integer.parseInt(phrase[1]), Integer.parseInt(phrase[1]), Integer.parseInt(phrase[2])); // A changer c'est juste pour avoir un héro test.
                 break;
         }
+        
         String phraseFinale = "In his quest, ";
         int i = 3; // la 3ième position dans le tableau est la première phrase conçernant l'action commis par le héro
         while (i < phrase.length) {

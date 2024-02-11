@@ -63,20 +63,21 @@ public class Hero {
     // Méthodes action
     // -----------------Méthode figthing()-----------------
     public String fighting(Enemy enemy) {
+        int k = 1;
         while (this.getHealth() > 0 && enemy.getHealth() > 0) {
             this.decreaseHealth(enemy.getAttackPower());
             enemy.decreaseHealth(this.getAttackPower());
-            
-            System.out.println("Hero's health after combat: " + this.getHealth()); // TEST
-            System.out.println("Enemy's health after combat: " + enemy.getHealth()); // TEST
+
+            System.out.println("   Fight " + k); // TEST
+            System.out.println("      Enemy's health: " + enemy.getHealth()); // TEST
+            System.out.println("      Hero's health: " + this.getHealth()); // TEST
+            k++;
         }
 
         if (this.getHealth() <= 0) { // On regarde si le héro est mort après le combat
             return "dead"; 
         } else {
             enemy.statsUpdate(); // On update les stats du prochain ennemi (même s'il y en a pas)
-            System.out.println("Next enemy's health (+10): " + enemy.getHealth() + ", next enemy's attack power (+5): " + enemy.getAttackPower()); // TEST
-
             return "alive";
         }
     }

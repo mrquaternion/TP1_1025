@@ -48,8 +48,11 @@ public class ArgsProcessor {
                     if (hero.fighting(enemy).equals("alive")) { // Combat
                         numberOfEnemiesDefeated++; // On itère
                         System.out.println("The hero defeated " + numberOfEnemiesDefeated + " enemy."); // TEST
+                        System.out.println("Hero's health after combat " + numberOfEnemiesDefeated + ": " + hero.getHealth()); // TEST
+                        System.out.println("Next enemy's health (+10): " + enemy.getHealth() + ", next enemy's attack power (+5): " + enemy.getAttackPower()); // TEST
                         System.out.println("--------------------------------"); // TEST
                     } else { // Si le héro est mort alors on arrête tout
+                        System.out.println("The hero is dead.");
                         return false;
                     }
                 }   

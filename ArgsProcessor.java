@@ -15,17 +15,16 @@ public class ArgsProcessor {
                 hero = new HeroEquilibre(Integer.parseInt(phrase[1]), Integer.parseInt(phrase[1]), Integer.parseInt(phrase[2])); // A changer c'est juste pour avoir un héro test.
                 break;
         }
-        
+
         String phraseFinale = "In his quest, ";
         int i = 3; // la 3ième position dans le tableau est la première phrase conçernant l'action commis par le héro
+
         while (i < phrase.length) {
             doAction(phrase[i], hero); 
             i++;
         }
     }
 
-
-    
 
         //TODO : Handle the phrase and output the result
     
@@ -48,6 +47,8 @@ public class ArgsProcessor {
                 while (numberOfEnemiesDefeated < Integer.parseInt(phrase[1])) { // Combat jusqu'à temps que tous les ennemis soient battus   
                     if (hero.fighting(enemy).equals("alive")) { // Combat
                         numberOfEnemiesDefeated++; // On itère
+                        System.out.println("The hero defeated " + numberOfEnemiesDefeated + " enemy."); // TEST
+                        System.out.println("--------------------------------"); // TEST
                     } else { // Si le héro est mort alors on arrête tout
                         return false;
                     }

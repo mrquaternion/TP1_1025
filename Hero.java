@@ -67,15 +67,16 @@ public class Hero {
             this.decreaseHealth(enemy.getAttackPower());
             enemy.decreaseHealth(this.getAttackPower());
             
-            System.out.println("Hero's health after combat: " + this.getHealth());
-            System.out.println("Enemy's health after combat: " + enemy.getHealth());
+            System.out.println("Hero's health after combat: " + this.getHealth()); // TEST
+            System.out.println("Enemy's health after combat: " + enemy.getHealth()); // TEST
         }
 
-        if (this.getHealth() <= 0) {
-            return "dead";
+        if (this.getHealth() <= 0) { // On regarde si le héro est mort après le combat
+            return "dead"; 
         } else {
             enemy.statsUpdate(); // On update les stats du prochain ennemi (même s'il y en a pas)
-            System.out.println("Enemy's health update: " + enemy.getHealth());
+            System.out.println("Next enemy's health (+10): " + enemy.getHealth() + ", next enemy's attack power (+5): " + enemy.getAttackPower()); // TEST
+
             return "alive";
         }
     }

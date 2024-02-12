@@ -3,16 +3,16 @@ import java.lang.Math;
 public  class Hero {
     // Attributs privés
     private int health, maxHealth;
-    private int pointsAtq;
+    private int attackPower;
     private int level = 1;
     private int experience = 0;
     
 
     // Constructeur
-    public Hero(int health, int maxHealth,int pointsAtq) {
+    public Hero(int health, int maxHealth, int attackPower) {
         this.health = health;
         this.maxHealth = maxHealth;
-        this.pointsAtq = pointsAtq;
+        this.attackPower = attackPower;
     }
 
     // Getters
@@ -24,6 +24,10 @@ public  class Hero {
         return this.maxHealth;
     }
 
+    public int getAttackPower() {
+        return this.attackPower;
+    }
+
     public int getLevel() {
         return this.miseNiveau(level);
     }
@@ -32,7 +36,7 @@ public  class Hero {
         return this.experience;
     }
 
-    
+
     // Setters
 
 
@@ -51,23 +55,47 @@ public  class Hero {
         return exp_requis;
     }
 
-    // Méthodes action
-    /* 
-    private String fighting() {
-        
+    public int decreaseHealth(int enemyAttackPower) {
+        this.health = health - enemyAttackPower;
+        return health;
     }
 
-    private String resting() {
+    // Méthodes action
+    // -----------------Méthode figthing()-----------------
+    public String fighting(Enemy enemy) {
+        int k = 1;
+        while (this.getHealth() > 0 && enemy.getHealth() > 0) {
+            this.decreaseHealth(enemy.getAttackPower());
+            enemy.decreaseHealth(this.getAttackPower());
+
+            System.out.println("   Fight " + k); // TEST
+            System.out.println("      Enemy's health: " + enemy.getHealth()); // TEST
+            System.out.println("      Hero's health: " + this.getHealth()); // TEST
+            k++;
+        }
+
+        if (this.getHealth() <= 0) { // On regarde si le héro est mort après le combat
+            return "dead"; 
+        } else {
+            enemy.statsUpdate(); // On update les stats du prochain ennemi (même s'il y en a pas)
+            return "alive";
+        }
+    }
+
+    // -----------------Méthode resting()-----------------
+    public String resting() {
         return healing();
     }
 
-    private String healing() {
+    // -----------------Méthode healing()-----------------
+    public String healing() {
         this.health = maxHealth;
         return Integer.toString(this.health);
     }
 
-    private String training() {
-        
+    // -----------------Méthode training()-----------------
+    public String training() {
+        throw new UnsupportedOperationException("Method not yet implemented");
     }
     */
 }

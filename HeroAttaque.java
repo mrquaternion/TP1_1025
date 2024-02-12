@@ -1,7 +1,7 @@
 public class HeroAttaque extends Hero {
 
     // Constructeur
-    public HeroAttaque(int health, int maxHealth,int pointsAtq) {
-        super(health, maxHealth,pointsAtq*2);
+    public HeroAttaque(int health, int maxHealth, int pointsAttaque) {
+        super(health, maxHealth, pointsAttaque * 2); // Les points d'attaque doublent
     }
 }

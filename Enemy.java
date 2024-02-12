@@ -16,7 +16,5 @@ public class Enemy {
         this.pointDeVie += 10;
         this.pointAttaque += 5;
         this.pointExperience += 8;
-        String tom = "est con";
     }
-
 }

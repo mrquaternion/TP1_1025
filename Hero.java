@@ -58,11 +58,12 @@ public  class Hero {
     }
 
     private String resting() {
-        
+        return healing();
     }
 
     private String healing() {
-        
+        this.health = maxHealth;
+        return Integer.toString(this.health);
     }
 
     private String training() {

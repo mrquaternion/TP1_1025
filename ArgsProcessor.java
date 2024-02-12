@@ -3,11 +3,9 @@ public class ArgsProcessor {
         String[] phrase = makePhrase(args[0]);
         Hero hero;
         String nom = phrase[0];
-        System.out.println(phrase[1]);
         
         switch (nom.charAt(0)) {
             case 'A':
-                hero = new HeroAttaque(Integer.parseInt(phrase[1]), Integer.parseInt(phrase[1]), Integer.parseInt(phrase[2])); // A changer c'est juste pour avoir un héro test.
                 hero = new HeroAttaque(Integer.parseInt(phrase[1]), Integer.parseInt(phrase[1]), Integer.parseInt(phrase[2])); // A changer c'est juste pour avoir un héro test.
                 break;
             case 'D':
@@ -19,11 +17,8 @@ public class ArgsProcessor {
         }
 
         String phraseFinale = "In his quest, ";
-        int i = 3; // la 3ième position dans le tableau est la première phrase conçernant l'action commis par le héro
-
-        while (i < phrase.length) {
+        for (int i = 3; i < phrase.length; i++) { // la 3ième position dans le tableau est la première phrase conçernant l'action commis par le héro
             doAction(phrase[i], hero); 
-            i++;
         }
     }
 
@@ -44,13 +39,13 @@ public class ArgsProcessor {
         switch (phrase[0]) {
             case "fought":
                 Enemy enemy = new Enemy(); // On crée l'ennemi ici et non dans la méthode fighting() de Hero autrement une nouvelle instance sera toujours créée
-                int numberOfEnemiesDefeated = 0;
+                int numberOfEnemies = Integer.parseInt(phrase[1]);
 
-                while (numberOfEnemiesDefeated < Integer.parseInt(phrase[1])) { // Combat jusqu'à temps que tous les ennemis soient battus   
-                    if (hero.fighting(enemy).equals("alive")) { // Combat
-                        numberOfEnemiesDefeated++; // On itère
-                        System.out.println("The hero defeated " + numberOfEnemiesDefeated + " enemy."); // TEST
-                        System.out.println("Hero's health after combat " + numberOfEnemiesDefeated + ": " + hero.getHealth()); // TEST
+                for (int i = 0; i < numberOfEnemies; i++) { // Combat jusqu'à temps que tous les ennemis soient battus   
+                    if (hero.fighting(enemy)) { // Combat
+                        hero.numberOfEnemiesDefeated++; // On itère
+                        System.out.println("The hero defeated " + hero.numberOfEnemiesDefeated + " enemy."); // TEST
+                        System.out.println("Hero's health after combat " + hero.numberOfEnemiesDefeated + ": " + hero.getHealth()); // TEST
                         System.out.println("Next enemy's health (+10): " + enemy.getHealth() + ", next enemy's attack power (+5): " + enemy.getAttackPower()); // TEST
                         System.out.println("--------------------------------"); // TEST
                     } else { // Si le héro est mort alors on arrête tout
@@ -76,9 +71,5 @@ public class ArgsProcessor {
                 break;
         }
         return true;
-    }
-
-    private static void choixType(String[] phrase){
-        
     }
 }

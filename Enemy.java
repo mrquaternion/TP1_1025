@@ -7,6 +7,10 @@ public class Enemy {
     private int initialHealth;
     private int initialAttackPower;
 
+    private final int healthLevelUp = 10;
+    private final int attackPowerLevelUp = 5;
+    private final int experienceLevelUp = 8;
+
     // Constructeur
     public Enemy() {
         this.initialHealth = health; // Initialisation initialHealth
@@ -46,15 +50,15 @@ public class Enemy {
     public void statsUpdate() { // La fonction fight() de la classe héro appel cette fonction si le héro bat le monstre
         this.statsReset(); // Si on améliore les stats d'un ennemi alors on reset ses stats indirectement avant ça
 
-        this.initialHealth = health + 10; // Les points de vie initiaux de l'ennemi augmente également (autrement il y a reset à chaque combat)
-        this.health = health + 10;
-        this.initialAttackPower = attackPower + 5; // Même chose pour les points d'attaque initiaux
-        this.attackPower = attackPower + 5;
-        this.experience = experience + 8;
+        this.initialHealth = health + healthLevelUp; // Les points de vie initiaux de l'ennemi augmente également (autrement il y a reset à chaque combat)
+        this.initialAttackPower = attackPower + attackPowerLevelUp; // Même chose pour les points d'attaque initiaux
+        this.health = health + healthLevelUp;
+        this.attackPower = attackPower + attackPowerLevelUp;
+        this.experience = experience + experienceLevelUp;
     }
 
-    // -----------------Méthode heroAttackPower()-----------------
-    public int decreaseHealth(int heroAttackPower) {
+    // -----------------Méthode decreaseHealth()-----------------
+    public int decreaseHealth(int heroAttackPower) { // Appelé lorsqu'il y a combat
         this.health = health - heroAttackPower;
         return health;
     }

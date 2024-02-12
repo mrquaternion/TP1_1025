@@ -2,12 +2,15 @@ import java.lang.Math;
 
 public  class Hero {
     // Attributs privés
-    protected int health;
     private int maxHealth;
-    private int attackPower;
-    private int initialHealth;
     private int level = 1;
     private int experience = 0;
+    public int numberOfEnemiesDefeated = 0;
+
+    // Attributs protégés
+    protected int health;
+    protected int attackPower;
+    protected final int attackerPowerLevelUp = 5;
     
 
     // Constructeur
@@ -15,7 +18,6 @@ public  class Hero {
         this.health = health;
         this.maxHealth = maxHealth;
         this.attackPower = attackPower;
-        this.initialHealth = health; // Initialisation initialHealth
     }
 
     // Getters
@@ -58,7 +60,8 @@ public  class Hero {
         return required_exp;
     }
 
-    public int decreaseHealth(int enemyAttackPower) {
+    // -----------------Méthode decreaseHealth()-----------------
+    public int decreaseHealth(int enemyAttackPower) { // Appelé lorsqu'il y a combat
         this.health = health - enemyAttackPower;
         return health;
     }
@@ -67,13 +70,13 @@ public  class Hero {
     public void statsUpdate() {
         this.attackPower = attackPower + 5;
         this.maxHealth = maxHealth + 12;
-        this.health = initialHealth;
+        this.health = maxHealth;
     }
 
     // Méthodes action
     // -----------------Méthode figthing()-----------------
-    public String fighting(Enemy enemy) {
-        int k = 1;
+    public Boolean fighting(Enemy enemy) {
+        int k = 1; // TEST
         while (this.getHealth() > 0 && enemy.getHealth() > 0) {
             this.decreaseHealth(enemy.getAttackPower());
             enemy.decreaseHealth(this.getAttackPower());
@@ -85,10 +88,10 @@ public  class Hero {
         }
 
         if (this.getHealth() <= 0) { // On regarde si le héro est mort après le combat
-            return "dead"; 
+            return false; 
         } else {
             enemy.statsUpdate(); // On update les stats du prochain ennemi (même s'il y en a pas)
-            return "alive";
+            return true;
         }
     }
 

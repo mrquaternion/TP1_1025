@@ -11,4 +11,10 @@ public class HeroAttaque extends Hero {
         this.health = health - (enemyAttackPower * 2); // Le hero se prend 2 fois les points d'attaque de l'ennemi
         return health;
     }
+
+    // -----------------Méthode statsUpdate()-----------------
+    @Override
+    public void statsUpdate() {
+        this.attackPower = attackPower + (attackerPowerLevelUp * 2); // On a pas le même problème qu'avec HeroDefense
+    }
 }

@@ -48,7 +48,7 @@ public class Enemy {
 
         this.initialHealth = health + 10; // Les points de vie initiaux de l'ennemi augmente également (autrement il y a reset à chaque combat)
         this.health = health + 10;
-        this.initialAttackPower = attackPower + 10; // Même chose pour les points d'attaque initiaux
+        this.initialAttackPower = attackPower + 5; // Même chose pour les points d'attaque initiaux
         this.attackPower = attackPower + 5;
         this.experience = experience + 8;
     }

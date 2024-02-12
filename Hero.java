@@ -2,8 +2,10 @@ import java.lang.Math;
 
 public  class Hero {
     // Attributs privés
-    private int health, maxHealth;
+    protected int health;
+    private int maxHealth;
     private int attackPower;
+    private int initialHealth;
     private int level = 1;
     private int experience = 0;
     
@@ -13,6 +15,7 @@ public  class Hero {
         this.health = health;
         this.maxHealth = maxHealth;
         this.attackPower = attackPower;
+        this.initialHealth = health; // Initialisation initialHealth
     }
 
     // Getters
@@ -29,7 +32,7 @@ public  class Hero {
     }
 
     public int getLevel() {
-        return this.miseNiveau(level);
+        return this.levelUp(level);
     }
 
     public int getExperience() {
@@ -41,23 +44,30 @@ public  class Hero {
 
 
     // Autres méthodes
-    private int miseNiveau(int level) {
-        if (experience >= pointExperience(level)) {
-            this.experience = experience - pointExperience(level); // ***Le hero peut avoir plus que le max de pointExperience()?***
+    private int levelUp(int level) {
+        if (experience >= experiencePoints(level)) {
+            this.experience = experience - experiencePoints(level); // ***Le hero peut avoir plus que le max de pointExperience()?***
             this.level = level + 1;
         }
         return this.level;
     }
 
-    private int pointExperience(int level) {
-        int exp_requis = (int)((50 + (this.level + 1) * 20 * Math.pow(1.1, this.level + 1)) + 1); // Pour prendre l'entier supérieur, on ajoute 1 au résultat
+    private int experiencePoints(int level) {
+        int required_exp = (int)((50 + (this.level + 1) * 20 * Math.pow(1.1, this.level + 1)) + 1); // Pour prendre l'entier supérieur, on ajoute 1 au résultat
                                                                                                     // et on cast un int sur cette addition (cela va tronquer)
-        return exp_requis;
+        return required_exp;
     }
 
     public int decreaseHealth(int enemyAttackPower) {
         this.health = health - enemyAttackPower;
         return health;
+    }
+
+    // -----------------Méthode statsUpdate()-----------------
+    public void statsUpdate() {
+        this.attackPower = attackPower + 5;
+        this.maxHealth = maxHealth + 12;
+        this.health = initialHealth;
     }
 
     // Méthodes action
@@ -97,5 +107,4 @@ public  class Hero {
     public String training() {
         throw new UnsupportedOperationException("Method not yet implemented");
     }
-    */
 }

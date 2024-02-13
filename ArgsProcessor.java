@@ -64,7 +64,9 @@ public class ArgsProcessor {
                         System.out.println("The hero defeated " + hero.numberOfEnemiesDefeated + " enemy."); // TEST
                         System.out.println("Hero's health after combat " + hero.numberOfEnemiesDefeated + ": " + hero.getHealth()); // TEST
                         System.out.println("Next enemy's health (+10): " + enemy.getHealth() + ", next enemy's attack power (+5): " + enemy.getAttackPower()); // TEST
+                        System.out.println("xp :" + hero.getLevel());
                         System.out.println("--------------------------------"); // TEST
+                        hero.levelUp(); //on vérifie si le héro peut level up
                     } else { // Si le héro est mort alors on arrête tout
                         System.out.println("The hero is dead.");
                         return false;

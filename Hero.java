@@ -34,7 +34,7 @@ public  class Hero {
     }
 
     public int getLevel() {
-        return this.levelUp(level);
+        return this.level;
     }
 
     public int getExperience() {
@@ -46,12 +46,12 @@ public  class Hero {
 
 
     // Autres méthodes
-    private int levelUp(int level) {
-        if (experience >= experiencePoints(level)) {
-            this.experience = experience - experiencePoints(level); // ***Le hero peut avoir plus que le max de pointExperience()?***
-            this.level = level + 1;
+    public void levelUp() {
+        if (experience >= experiencePoints(this.level)) { //on regarde si les héro peut level up
+            this.experience = 0; // On remet les points d'xp du hero à 0
+            this.level += 1; 
+            statsUpdate(); // on augmente les stas du hero
         }
-        return this.level;
     }
 
     private int experiencePoints(int level) {
@@ -95,19 +95,24 @@ public  class Hero {
             return false; 
         } else {
             enemy.statsUpdate(); // On update les stats du prochain ennemi (même s'il y en a pas)
+            this.experience += enemy.getExperience(); // On ajoute l'experience gagné suite à la victoire du hero
             return true;
         }
     }
 
     // -----------------Méthode resting()-----------------
-    public void resting() {
-        this.health = this.maxHealth;
+    public void resting() { // 
+        this.health = this.maxHealth; //remet les points de vie du hero au max
         System.out.println("test");
     }
 
     // -----------------Méthode healing()-----------------
     public void healing(int healingPoint) {
-        this.health += healingPoint;
+         if (this.health + healingPoint >= this.maxHealth) { //verifie que le soin ne depasse pas la limite maxHealth
+            this.health = this.maxHealth; 
+         }else{
+            this.health += healingPoint;
+         }
     }
 
     // -----------------Méthode training()-----------------

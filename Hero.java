@@ -80,8 +80,10 @@ public  class Hero {
         while (this.getHealth() > 0 && enemy.getHealth() > 0) {
             
 
-            this.decreaseHealth(enemy.getAttackPower());
-            enemy.decreaseHealth(this.getAttackPower());
+            enemy.decreaseHealth(this.getAttackPower()); // hero attaque en premier
+            if (enemy.getHealth() > 0) { // vérifie si l'enemie a toujours des points de vie pour attaquer
+                this.decreaseHealth(enemy.getAttackPower());
+            }
 
             System.out.println("   Fight " + k); // TEST
             System.out.println("      Enemy's health after combat: " + enemy.getHealth()); // TEST

@@ -1,7 +1,7 @@
 public class Enemy {
 
     // Attributs privés
-    private int health = 10;
+    private int health = 100;
     private int attackPower = 25;
     private int experience = 35;
     private int initialHealth;

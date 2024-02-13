@@ -3,6 +3,7 @@ public class ArgsProcessor {
         String[] phrase = makePhrase(args[0]);
         Hero hero;
         String nom = phrase[0];
+        Boolean status = true;
         
         switch (nom.charAt(0)) {
             case 'A':
@@ -16,10 +17,16 @@ public class ArgsProcessor {
                 break;
         }
 
-        String phraseFinale = "In his quest, ";
+        String phraseFinale = "In his quest, " + nom;
         for (int i = 3; i < phrase.length; i++) { // la 3ième position dans le tableau est la première phrase conçernant l'action commis par le héro
             doAction(phrase[i], hero); 
         }
+        if (hero.getHealth() <= 0) {
+            phraseFinale += " died after beating " + hero.numberOfEnemiesDefeated + " enemies and attaining level " + hero.getLevel() + "!";
+        } else {
+            phraseFinale += " beat " + hero.numberOfEnemiesDefeated + " enemies, attained level " + " and survived with " + " HP!";
+        }
+        System.out.println(phraseFinale);
     }
 
 

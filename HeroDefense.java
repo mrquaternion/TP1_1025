@@ -3,7 +3,7 @@ public class HeroDefense extends Hero {
 
     // Constructeur
     public HeroDefense(int health, int maxHealth, int attackPower) {
-        super(health, maxHealth, attackPower);
+        super(health, maxHealth, (int)(attackPower / 2));
         this.tempAttackPower = attackPower;
     }
 

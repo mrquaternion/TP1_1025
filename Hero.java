@@ -50,7 +50,7 @@ public  class Hero {
         if (experience >= experiencePoints(this.level)) { //on regarde si les héro peut level up
             this.experience = 0; // On remet les points d'xp du hero à 0
             this.level += 1; 
-            statsUpdate(); // on augmente les stas du hero
+            statsUpdate(); // on augmente les stats du hero
         }
     }
 

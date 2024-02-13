@@ -3,7 +3,6 @@ public class ArgsProcessor {
         String[] phrase = makePhrase(args[0]);
         Hero hero;
         String nom = phrase[0];
-        Boolean status = true;
         
         switch (nom.charAt(0)) {
             case 'A':
@@ -24,7 +23,7 @@ public class ArgsProcessor {
         if (hero.getHealth() <= 0) {
             phraseFinale += " died after beating " + hero.numberOfEnemiesDefeated + " enemies and attaining level " + hero.getLevel() + "!";
         } else {
-            phraseFinale += " beat " + hero.numberOfEnemiesDefeated + " enemies, attained level " + " and survived with " + " HP!";
+            phraseFinale += " beat " + hero.numberOfEnemiesDefeated + " enemies, attained level " + hero.getLevel() + " and survived with " + hero.health + " HP!";
         }
         System.out.println(phraseFinale);
     }
@@ -51,9 +50,6 @@ public class ArgsProcessor {
                 }
                 
                 int numberOfEnemies = Integer.parseInt(phrase[1]);
-
-                
-
                 for (int i = 0; i < numberOfEnemies; i++) { // Combat jusqu'à temps que tous les ennemis soient battus   
 
                     System.out.println("      Enemy's health: " + enemy.getHealth()); // TEST

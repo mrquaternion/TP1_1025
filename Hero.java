@@ -96,18 +96,18 @@ public  class Hero {
     }
 
     // -----------------Méthode resting()-----------------
-    public String resting() {
-        return healing();
+    public void resting() {
+        this.health = this.maxHealth;
+        System.out.println("test");
     }
 
     // -----------------Méthode healing()-----------------
-    public String healing() {
-        this.health = maxHealth;
-        return Integer.toString(this.health);
+    public void healing(int healingPoint) {
+        this.health += healingPoint;
     }
 
     // -----------------Méthode training()-----------------
-    public String training() {
-        throw new UnsupportedOperationException("Method not yet implemented");
+    public void training(int attackTrainingBonus) {
+        this.attackPower += attackTrainingBonus;
     }
 }

@@ -39,7 +39,12 @@ public class ArgsProcessor {
         switch (phrase[0]) {
             case "fought":
                 Enemy enemy = new Enemy(); // On crée l'ennemi ici et non dans la méthode fighting() de Hero autrement une nouvelle instance sera toujours créée
+                for (int i = 0; i < hero.numberOfEnemiesDefeated; i++){
+                    enemy.statsUpdate();
+                }
                 int numberOfEnemies = Integer.parseInt(phrase[1]);
+
+                
 
                 for (int i = 0; i < numberOfEnemies; i++) { // Combat jusqu'à temps que tous les ennemis soient battus   
                     if (hero.fighting(enemy)) { // Combat
@@ -61,12 +66,12 @@ public class ArgsProcessor {
                 break;
             case "healed":
                 //TODO : Handle the healing
-                hero.healing();
+                hero.healing(Integer.parseInt(phrase[1]));
 
                 break;
             case "trained":
                 //TODO : Handle the training
-                hero.training();
+                hero.training(Integer.parseInt(phrase[3]));
 
                 break;
         }

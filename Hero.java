@@ -2,7 +2,7 @@ import java.lang.Math;
 
 public  class Hero {
     // Attributs privés
-    private int maxHealth;
+    protected int maxHealth;
     private int level = 1;
     private int experience = 0;
     public int numberOfEnemiesDefeated = 0;
@@ -16,7 +16,7 @@ public  class Hero {
     // Constructeur
     public Hero(int health, int maxHealth, int attackPower) {
         this.health = health;
-        this.maxHealth = maxHealth;
+        this.maxHealth = health;
         this.attackPower = attackPower;
     }
 
@@ -50,7 +50,7 @@ public  class Hero {
         if (experience >= experiencePoints(this.level)) { //on regarde si les héro peut level up
             this.experience = 0; // On remet les points d'xp du hero à 0
             this.level += 1; 
-            statsUpdate(); // on augmente les stats du hero
+            this.statsUpdate(); // on augmente les stats du hero
         }
     }
 
@@ -103,7 +103,6 @@ public  class Hero {
     // -----------------Méthode resting()-----------------
     public void resting() { // 
         this.health = this.maxHealth; //remet les points de vie du hero au max
-        System.out.println("test");
     }
 
     // -----------------Méthode healing()-----------------

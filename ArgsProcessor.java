@@ -45,6 +45,8 @@ public class ArgsProcessor {
                 
                 int numberOfEnemies = Integer.parseInt(phrase[1]);
 
+                
+
                 for (int i = 0; i < numberOfEnemies; i++) { // Combat jusqu'à temps que tous les ennemis soient battus   
 
                     System.out.println("      Enemy's health: " + enemy.getHealth()); // TEST
@@ -69,11 +71,12 @@ public class ArgsProcessor {
                 break;
             case "healed":
                 //TODO : Handle the healing
-                hero.healing();
+                hero.healing(Integer.parseInt(phrase[1]));
 
                 break;
             case "trained":
-                //TODO : Handle the training   
+                //TODO : Handle the training
+                hero.training(Integer.parseInt(phrase[3]));
 
                 break;
         }

@@ -98,15 +98,14 @@ public  class Hero {
     }
 
     // -----------------Méthode resting()-----------------
-    public String resting() {
-        this.health = maxHealth;
-        return healing();
+    public void resting() {
+        this.health = this.maxHealth;
+        System.out.println("test");
     }
 
     // -----------------Méthode healing()-----------------
-    public String healing() {
-        this.health = maxHealth;
-        return Integer.toString(this.health);
+    public void healing(int healingPoint) {
+        this.health += healingPoint;
     }
 
     // -----------------Méthode training()-----------------

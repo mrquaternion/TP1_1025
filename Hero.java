@@ -10,7 +10,7 @@ public  class Hero {
     // Attributs protégés
     protected int health;
     protected int attackPower;
-    protected final int attackerPowerLevelUp = 5;
+    protected final int attackerPowerLevelUp = 6;
     
 
     // Constructeur
@@ -55,7 +55,7 @@ public  class Hero {
     }
 
     private int experiencePoints(int level) {
-        int required_exp = (int)((50 + (this.level + 1) * 20 * Math.pow(1.1, this.level + 1)) + 1); // Pour prendre l'entier supérieur, on ajoute 1 au résultat
+        int required_exp = (int)((50 + (this.level + 1) * 20 * Math.pow(1.1, this.level + 1)) + 0.99999); // Pour prendre l'entier supérieur, on ajoute 1 au résultat
                                                                                                     // et on cast un int sur cette addition (cela va tronquer)
         return required_exp;
     }
@@ -68,9 +68,10 @@ public  class Hero {
 
     // -----------------Méthode statsUpdate()-----------------
     public void statsUpdate() {
-        this.attackPower = attackPower + 5;
+        this.attackPower += attackerPowerLevelUp;
         this.maxHealth = maxHealth + 12;
         this.health = maxHealth;
+
     }
 
     // Méthodes action

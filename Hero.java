@@ -78,12 +78,14 @@ public  class Hero {
     public Boolean fighting(Enemy enemy) {
         int k = 1; // TEST
         while (this.getHealth() > 0 && enemy.getHealth() > 0) {
+            
+
             this.decreaseHealth(enemy.getAttackPower());
             enemy.decreaseHealth(this.getAttackPower());
 
             System.out.println("   Fight " + k); // TEST
-            System.out.println("      Enemy's health: " + enemy.getHealth()); // TEST
-            System.out.println("      Hero's health: " + this.getHealth()); // TEST
+            System.out.println("      Enemy's health after combat: " + enemy.getHealth()); // TEST
+            System.out.println("      Hero's health after combat: " + this.getHealth()); // TEST
             k++;
         }
 
@@ -97,6 +99,7 @@ public  class Hero {
 
     // -----------------Méthode resting()-----------------
     public String resting() {
+        this.health = maxHealth;
         return healing();
     }
 
@@ -107,7 +110,7 @@ public  class Hero {
     }
 
     // -----------------Méthode training()-----------------
-    public String training() {
-        throw new UnsupportedOperationException("Method not yet implemented");
+    public void training(int attackTrainingBonus) {
+        this.attackPower += attackTrainingBonus;
     }
 }

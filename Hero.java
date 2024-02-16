@@ -77,36 +77,14 @@ public  class Hero {
     // -----------------Méthode figthing()-----------------
     public Boolean fighting(Enemy enemy) {
         int k = 1; // TEST
-
-        // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        System.out.println("$$$$$$$$$$$$$$$$$$$$ Experience hero avant combat: " + getExperience() + " Experience necessaire pour level up: " + experiencePoints(this.level) + " $$$$$$$$$$$$$$$$$$$$");
-        // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         
         while (this.getHealth() > 0 && enemy.getHealth() > 0) {
 
-            // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-            System.out.println("   Fight " + k); // TEST
-            // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
             enemy.decreaseHealth(this.getAttackPower()); // hero attaque en premier
             
-            // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-            System.out.println("        Hero's turn (AtkPts: " + this.getAttackPower() + "):"); // TEST
-            System.out.println("                Enemy's health: " + enemy.getHealth()); // TEST
-            // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
             if (enemy.getHealth() > 0) { // vérifie si l'enemie a toujours des points de vie pour attaquer
                 this.decreaseHealth(enemy.getAttackPower());
-
-                // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                System.out.println("        Enemy's turn (AtkPts: " + enemy.getAttackPower() + "):"); // TEST
-                System.out.println("                Hero's health: " + this.getHealth()); // TEST
-                // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-            } else {
-                System.out.println("The enemy is dead so the hero doesn't take damage.");
-            }
-            k++;
+            } 
         }
 
         if (this.getHealth() <= 0) { // On regarde si le héro est mort après le combat

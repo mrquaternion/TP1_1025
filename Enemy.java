@@ -34,9 +34,7 @@ public class Enemy {
         return this.attackPower;
     }
 
-    
     // Setters
-
 
 
     // Autres méthodes

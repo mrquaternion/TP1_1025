@@ -1,6 +1,6 @@
 import java.lang.Math;
 
-public  class Hero {
+public class Hero {
 
     //--------------------// Attributs privés //--------------------// 
     private int level = 1;
@@ -17,9 +17,9 @@ public  class Hero {
     protected final int attackerPowerLevelUp = 6;
     
     //--------------------// Constructeur //--------------------//
-    public Hero(int health, int maxHealth, int attackPower) {
-        setHealth(maxHealth);
-        setMaxHealth(maxHealth);
+    public Hero(int health, int attackPower) {
+        setHealth(health);
+        this.maxHealth = health;
         setAttackPower(attackPower);
     }
 
@@ -35,13 +35,13 @@ public  class Hero {
     public int getExperience() { return this.experience; }
 
     //--------------------// Setters //--------------------//
-    public void setLevel(int level) { this.level = level; }
+    private void setLevel(int level) { this.level = level; }
 
-    public void setExperience(int experience) { this.experience = experience; }
+    private void setExperience(int experience) { this.experience = experience; }
 
-    public void setNumberOfEnemiesDefeated(int numberOfEnemiesDefeated) { this.numberOfEnemiesDefeated = numberOfEnemiesDefeated; }
+    private void setNumberOfEnemiesDefeated(int numberOfEnemiesDefeated) { this.numberOfEnemiesDefeated = numberOfEnemiesDefeated; }
 
-    public void setHealth(int health) {
+    private void setHealth(int health) {
         if (health > 0) {
             this.health = health;
         } else {
@@ -49,10 +49,7 @@ public  class Hero {
         }
     }
 
-    public void setMaxHealth(int maxHealth) { this.maxHealth = maxHealth; } // Les points de vie maximum du héro dépendent des points de vie alors
-                                                                            // pas besoin de vérifier
-
-    public void setAttackPower(int attackPower) {
+    private void setAttackPower(int attackPower) {
         if (attackPower > 0) {
             this.attackPower = attackPower;
         } else {
@@ -63,18 +60,18 @@ public  class Hero {
     //--------------------// Autres méthodes //--------------------//
     // Méthode levelUp
     public void levelUp() {
-        if (experience >= experiencePoints(this.level)) { // On regarde si le héro peut level up
-            this.experience = 0; // On remet les points d'xp du hero à 0
-            this.level += 1; 
-            this.statsUpdate(); // On augmente les stats du hero
+        if (experience >= experiencePoints(getLevel())) { // On regarde si le héro peut level up
+            setExperience(0); // On remet les points d'exp du héro à 0
+            setLevel(getLevel() + 1); // On augmente le niveau du héro
+            statsUpdate(); // On augmente les stats du héro
         }
     }
 
     // Méthode statsUpdate
     public void statsUpdate() {
-        setHealth(getMaxHealth());
-        setMaxHealth(getMaxHealth() + maxHealthLevelUp);
-        setAttackPower(getAttackPower() + attackerPowerLevelUp);
+        this.attackPower += attackerPowerLevelUp;
+        this.maxHealth += maxHealthLevelUp; // Doit être en premier (avant que l'on réinitialise la vie du héro)
+        this.health = maxHealth;
     }
 
     // Méthode experiencePoints
@@ -86,7 +83,7 @@ public  class Hero {
 
     // Méthode decreaseHealth
     public int decreaseHealth(int damageTaken) { // Appelée lorsqu'il y a combat
-        setHealth(getHealth() - damageTaken);
+        this.health = getHealth() - damageTaken;
         return health;
     }
 
@@ -96,13 +93,14 @@ public  class Hero {
         
         while (this.getHealth() > 0 && enemy.getHealth() > 0) {
             enemy.decreaseHealth(this.getAttackPower()); // Le héro attaque en premier
+
             if (enemy.getHealth() > 0) { // Vérifie si l'ennemi a toujours des points de vie
                 this.decreaseHealth(enemy.getAttackPower()); // L'ennemi attaque par la suite
-            } 
+            }
         }
 
         // On regarde si le héro est mort après le combat
-        if (this.getHealth() <= 0) { 
+        if (getHealth() <= 0) { 
             return false; 
         } else {
             this.experience += enemy.getExperience(); // On ajoute l'experience gagnée suite à la victoire du héro
@@ -112,18 +110,18 @@ public  class Hero {
     }
 
     // Méthode resting
-    public void resting() { setHealth(maxHealth); } // Remet les points de vie du héro au maximum
+    public void resting() { this.health = getMaxHealth(); } // Remet les points de vie du héro au maximum
 
     // Méthode healing
     public void healing(int healingPoint) {
         int newHealth = getHealth() + healingPoint;
         if (newHealth >= getMaxHealth()) { // Vérifie que le soin ne depasse pas la limite maxHealth
-            setHealth(maxHealth);
+            this.health = maxHealth;
         } else {
-            setHealth(newHealth);
+            this.health = newHealth;
         }
     }
 
     // Méthode training
-    public void training(int attackTrainingBonus) { setAttackPower(getAttackPower() + attackTrainingBonus); } // Augmente les points d'attaque du Hero
+    public void training(int attackTrainingBonus) { this.attackPower += attackTrainingBonus; } // Augmente les points d'attaque du Hero
 }

@@ -1,7 +1,7 @@
 public class HeroEquilibre extends Hero {
     
     // Constructeur
-    public HeroEquilibre(int health, int maxHealth, int pointsAttaque) {
-        super(health, maxHealth, pointsAttaque);
+    public HeroEquilibre(int health, int maxHealth, int attackPower) {
+        super(health, maxHealth, attackPower);
     }
 }

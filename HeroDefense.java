@@ -1,5 +1,4 @@
 public class HeroDefense extends Hero {
-    private float tempAttackPower;
 
     // Constructeur
     public HeroDefense(int health, int maxHealth, int attackPower) {
@@ -18,6 +17,6 @@ public class HeroDefense extends Hero {
     public void statsUpdate() {
         this.maxHealth = maxHealth + 12;
         this.health = maxHealth;
-        this.attackPower += (int)(attackerPowerLevelUp/2);  
+        this.attackPower = attackPower + (int)(attackerPowerLevelUp / 2);  
     }
 }

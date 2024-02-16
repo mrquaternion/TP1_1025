@@ -51,31 +51,39 @@ public class ArgsProcessor {
                 for (int i = 0; i < hero.numberOfEnemiesDefeated; i++) { // À chaque phrase, on doit garder les stats de l'instance Enemy
                     enemy.statsUpdate();
                 }
-                hero.levelUp();
+                
                 int numberOfEnemies = Integer.parseInt(phrase[1]);
-                hero.levelUp();//level up avant tous les combats
-                for (int i = 0; i < numberOfEnemies; i++) { // Combat jusqu'à temps que tous les ennemis soient battus   
-
+                
+                for (int i = 1; i <= numberOfEnemies; i++) { // Combat jusqu'à temps que tous les ennemis soient battus 
+                    
+                    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                    System.out.println("%%%%%%%%%%%%%%%%%% Combat " + (hero.numberOfEnemiesDefeated + 1) + " %%%%%%%%%%%%%%%%%%");
                     System.out.println("      Hero's health: " + hero.getHealth()); // TEST
                     System.out.println("      Enemy's health: " + enemy.getHealth()); // TEST
-                    
+                    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
                     if (hero.fighting(enemy)) { // Combat
+
                         hero.numberOfEnemiesDefeated++; // On itère
 
-                        if (i < numberOfEnemies - 1) {
-                            hero.levelUp(); //le héro essaye de level up sauf après le dernier combat
-                        }
-                        
+                        // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                         System.out.println("The hero defeated " + hero.numberOfEnemiesDefeated + " enemy."); // TEST
                         System.out.println("Hero's health after combat " + hero.numberOfEnemiesDefeated + ": " + hero.getHealth()); // TEST
                         System.out.println("Next enemy's health (+10): " + enemy.getHealth() + ", next enemy's attack power (+5): " + enemy.getAttackPower()); // TEST
                         System.out.println("--------------------------------"); // TEST
-                        
+                        // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+                        hero.levelUp(); // level up apres tous les combats
                     } else { // Si le héro est mort alors on arrête tout
+
+                        // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                         System.out.println("The hero is dead.");
+                        // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
                         return false;
                     }
                 }   
+                
                 break;
             case "rested":
                 //TODO : Handle the resting

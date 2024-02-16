@@ -58,7 +58,7 @@ public  class Hero {
     public void statsUpdate() {
         this.attackPower += attackerPowerLevelUp;
         this.maxHealth += 12;
-        this.health = maxHealth;
+        this.health = this.maxHealth;
     }
 
     private int experiencePoints(int level) {
@@ -77,6 +77,11 @@ public  class Hero {
     // -----------------Méthode figthing()-----------------
     public Boolean fighting(Enemy enemy) {
         int k = 1; // TEST
+
+        // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        System.out.println("$$$$$$$$$$$$$$$$$$$$ Experience hero avant combat: " + getExperience() + " Experience necessaire pour level up: " + experiencePoints(this.level) + " $$$$$$$$$$$$$$$$$$$$");
+        // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        
         while (this.getHealth() > 0 && enemy.getHealth() > 0) {
 
             // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -107,8 +112,9 @@ public  class Hero {
         if (this.getHealth() <= 0) { // On regarde si le héro est mort après le combat
             return false; 
         } else {
-            enemy.statsUpdate(); // On update les stats du prochain ennemi (même s'il y en a pas)
             this.experience += enemy.getExperience(); // On ajoute l'experience gagné suite à la victoire du hero
+            enemy.statsUpdate(); // On update les stats du prochain ennemi (même s'il y en a pas)
+            
             return true;
         }
     }

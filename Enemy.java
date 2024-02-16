@@ -42,8 +42,8 @@ public class Enemy {
     // Autres méthodes
     // -----------------Méthode statsReset()-----------------
     private void statsReset() {
-        this.health = initialHealth;
-        this.attackPower = initialAttackPower;
+        this.health = this.initialHealth;
+        this.attackPower = this.initialAttackPower;
     }
 
     // -----------------Méthode statsUpdate()-----------------
@@ -54,13 +54,13 @@ public class Enemy {
         this.health += healthLevelUp;
         this.attackPower += attackPowerLevelUp;
         this.experience += experienceLevelUp;
-        this.initialHealth = health; // Les points de vie initiaux de l'ennemi augmente également (autrement il y a reset à chaque combat)
-        this.initialAttackPower = attackPower; // Même chose pour les points d'attaque initiaux
+        this.initialHealth = this.health; // Les points de vie initiaux de l'ennemi augmente également (autrement il y a reset à chaque combat)
+        this.initialAttackPower = this.attackPower; // Même chose pour les points d'attaque initiaux
     }
 
     // -----------------Méthode decreaseHealth()-----------------
     public int decreaseHealth(int heroAttackPower) { // Appelé lorsqu'il y a combat
-        this.health = health - heroAttackPower;
+        this.health = this.health - heroAttackPower;
         return health;
     }
 }

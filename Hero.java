@@ -47,10 +47,10 @@ public  class Hero {
 
     // Autres méthodes
     public void levelUp() {
-        if (experience >= experiencePoints(this.level)) { // on regarde si le héro peut level up
+        if (experience >= experiencePoints(this.level)) { // On regarde si le héro peut level up
             this.experience = 0; // On remet les points d'xp du hero à 0
             this.level += 1; 
-            this.statsUpdate(); // on augmente les stats du hero
+            this.statsUpdate(); // On augmente les stats du hero
         }
     }
 
@@ -63,7 +63,7 @@ public  class Hero {
 
     private int experiencePoints(int level) {
         int required_exp = (int)((50 + (this.level + 1) * 20 * Math.pow(1.1, this.level + 1)) + 0.99999); // Pour prendre l'entier supérieur, on ajoute .99999 (en fait jamais 1 autrement
-                                                                                                    // si il a 98 points d'exp, il levelUp alors qu'il faut pas
+                                                                                                    // s'il a 98 points d'exp, il levelUp alors qu'il faut pas
         return required_exp;
     }
 
@@ -76,13 +76,11 @@ public  class Hero {
     // Méthodes action
     // -----------------Méthode figthing()-----------------
     public Boolean fighting(Enemy enemy) {
-        int k = 1; // TEST
         
         while (this.getHealth() > 0 && enemy.getHealth() > 0) {
-
-            enemy.decreaseHealth(this.getAttackPower()); // hero attaque en premier
+            enemy.decreaseHealth(this.getAttackPower()); // Le hero attaque en premier
             
-            if (enemy.getHealth() > 0) { // vérifie si l'enemie a toujours des points de vie pour attaquer
+            if (enemy.getHealth() > 0) { // Vérifie si l'enemie a toujours des points de vie pour attaquer
                 this.decreaseHealth(enemy.getAttackPower());
             } 
         }
@@ -98,13 +96,13 @@ public  class Hero {
     }
 
     // -----------------Méthode resting()-----------------
-    public void resting() { // 
-        this.health = this.maxHealth; //remet les points de vie du hero au max
+    public void resting() { 
+        this.health = this.maxHealth; // Remet les points de vie du hero au max
     }
 
     // -----------------Méthode healing()-----------------
     public void healing(int healingPoint) {
-         if (this.health + healingPoint >= this.maxHealth) { //verifie que le soin ne depasse pas la limite maxHealth
+         if ((this.health + healingPoint) >= this.maxHealth) { // Vérifie que le soin ne depasse pas la limite maxHealth
             this.health = this.maxHealth; 
          } else{
             this.health += healingPoint;
@@ -113,6 +111,6 @@ public  class Hero {
 
     // -----------------Méthode training()-----------------
     public void training(int attackTrainingBonus) {
-        this.attackPower += attackTrainingBonus;
+        this.attackPower += attackTrainingBonus; // Augmente les points d'attaque du Hero
     }
 }

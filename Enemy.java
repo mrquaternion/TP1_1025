@@ -47,7 +47,6 @@ public class Enemy {
     // -----------------Méthode statsUpdate()-----------------
     public void statsUpdate() { // La fonction fight() de la classe héro appel cette fonction si le héro bat le monstre
         this.statsReset(); // Si on améliore les stats d'un ennemi alors on reset ses stats indirectement avant ça
-
         
         this.health += healthLevelUp;
         this.attackPower += attackPowerLevelUp;

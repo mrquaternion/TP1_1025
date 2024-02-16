@@ -56,8 +56,8 @@ public class Enemy {
     }
 
     // -----------------Méthode decreaseHealth()-----------------
-    public int decreaseHealth(int heroAttackPower) { // Appelé lorsqu'il y a combat
-        this.health = this.health - heroAttackPower;
+    public int decreaseHealth(int damageTaken) { // Appelé lorsqu'il y a combat
+        this.health = this.health - damageTaken;
         return health;
     }
 }

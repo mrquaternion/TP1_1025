@@ -15,8 +15,8 @@ public class HeroDefense extends Hero {
     // -----------------Méthode statsUpdate()-----------------
     @Override
     public void statsUpdate() {
-        this.maxHealth = maxHealth + 12;
-        this.health = maxHealth;
-        this.attackPower = attackPower + (int)(attackerPowerLevelUp / 2);  
+        this.maxHealth += maxHealthLevelUp;
+        this.health = this.maxHealth;
+        this.attackPower += (int)(attackerPowerLevelUp / 2);  
     }
 }

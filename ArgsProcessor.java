@@ -52,14 +52,14 @@ public class ArgsProcessor {
                 }
                 
                 int numberOfEnemies = Integer.parseInt(phrase[1]);
-                
-                for (int i = 1; i <= numberOfEnemies; i++) { // Combat jusqu'à temps que tous les ennemis soient battus 
-
-                    if (hero.fighting(enemy)) { // Combat
-                        hero.numberOfEnemiesDefeated++; // On itère
-                        hero.levelUp(); // Level up apres tous les combats
-                    } else { return false; } // Si le héro est mort alors on arrête tout
-                }   
+                if (numberOfEnemies > 0) {
+                    for (int i = 1; i <= numberOfEnemies; i++) { // Combat jusqu'à temps que tous les ennemis soient battus 
+                        if (hero.fighting(enemy)) { // Combat
+                            hero.numberOfEnemiesDefeated++; // On itère
+                            hero.levelUp(); // Level up apres tous les combats
+                        } else { return false; } // Si le héro est mort alors on arrête tout
+                    } 
+                } else { throw new IllegalArgumentException("Il n'y a aucun ennemi à combattre. Entrez une valeur plus grande que 0."); }
                 break;
 
             case "rested":
@@ -67,11 +67,13 @@ public class ArgsProcessor {
                 break;
 
             case "healed":
-                hero.healing(Integer.parseInt(phrase[1]));
+                int healingPoints = Integer.parseInt(phrase[1]);
+                hero.healing(healingPoints);
                 break;
 
             case "trained":
-                hero.training(Integer.parseInt(phrase[3]));
+                int attackTrainingBonus = Integer.parseInt(phrase[3]);
+                hero.training(attackTrainingBonus);
                 break;
         }
         return true;

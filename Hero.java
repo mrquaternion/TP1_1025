@@ -39,8 +39,6 @@ public class Hero {
 
     private void setExperience(int experience) { this.experience = experience; }
 
-    private void setNumberOfEnemiesDefeated(int numberOfEnemiesDefeated) { this.numberOfEnemiesDefeated = numberOfEnemiesDefeated; }
-
     private void setHealth(int health) {
         if (health > 0) {
             this.health = health;

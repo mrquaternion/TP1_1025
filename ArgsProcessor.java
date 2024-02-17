@@ -4,15 +4,18 @@ public class ArgsProcessor {
         Hero hero;
         String nom = phrase[0];
         
+        int health = Integer.parseInt(phrase[1]);
+        int attackPower = Integer.parseInt(phrase[2]);
+        
         switch (nom.charAt(0)) {
             case 'A':
-                hero = new HeroAttaque(Integer.parseInt(phrase[1]), Integer.parseInt(phrase[2])); // A changer c'est juste pour avoir un héro test.
+                hero = new HeroAttaque(health, attackPower); // Création de l'instance HeroAttaque
                 break;
             case 'D':
-                hero = new HeroDefense(Integer.parseInt(phrase[1]), Integer.parseInt(phrase[2])); // A changer c'est juste pour avoir un héro test.
+                hero = new HeroDefense(health, attackPower); // Création de l'instance HeroDefense
                 break;
             default:
-                hero = new HeroEquilibre(Integer.parseInt(phrase[1]), Integer.parseInt(phrase[2])); // A changer c'est juste pour avoir un héro test.
+                hero = new HeroEquilibre(health, attackPower); // Création de l'instance HeroEquilibre
                 break;
         }
 

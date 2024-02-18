@@ -3,7 +3,6 @@ public class ArgsProcessor {
         String[] phrase = makePhrase(args[0]);
         Hero hero;
         String nom = phrase[0];
-        
         int health = Integer.parseInt(phrase[1]);
         int attackPower = Integer.parseInt(phrase[2]);
         
@@ -62,7 +61,7 @@ public class ArgsProcessor {
                             hero.levelUp(); // Level up apres tous les combats
                         } else { return false; } // Si le héro est mort alors on arrête tout
                     } 
-                } else { throw new IllegalArgumentException("Il n'y a aucun ennemi à combattre. Entrez une valeur plus grande que 0."); }
+                } else { throw new IllegalArgumentException("Il n'y a aucun ennemi à combattre."); }
                 break;
 
             case "rested":

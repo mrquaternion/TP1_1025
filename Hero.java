@@ -1,6 +1,6 @@
 import java.lang.Math;
 
-public class Hero {
+public abstract class Hero {
 
     //--------------------// Attributs privés //--------------------// 
     private int level = 1;
@@ -73,8 +73,8 @@ public class Hero {
     }
 
     // Méthode experiencePoints
-    private int experiencePoints(int level) {
-        int required_exp = (int)((50 + (this.level + 1) * 20 * Math.pow(1.1, this.level + 1)) + 0.99999); // Pour prendre l'entier supérieur, on ajoute .99999 (en fait jamais 1 autrement
+    private static int experiencePoints(int level) {
+        int required_exp = (int)((50 + (level + 1) * 20 * Math.pow(1.1, level + 1)) + 0.99999); // Pour prendre l'entier supérieur, on ajoute .99999 (en fait jamais 1 autrement
                                                                                                     // s'il a 98 points d'exp, il levelUp alors qu'il faut pas
         return required_exp;
     }

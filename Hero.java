@@ -66,10 +66,10 @@ public abstract class Hero {
     }
 
     // Méthode statsUpdate
-    public abstract void statsUpdate();
+    public abstract void statsUpdate(); // Doit absolument être implémenté dans les sousclasses
 
     // Méthode decreaseHealth
-    public abstract int decreaseHealth(int damageTaken);
+    public abstract int decreaseHealth(int damageTaken); // Doit absolument être implémenté dans les sousclasses
 
     // Méthode experiencePoints
     private static int experiencePoints(int level) {

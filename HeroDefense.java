@@ -2,7 +2,7 @@ public class HeroDefense extends Hero {
 
     //--------------------// Constructeur //--------------------// 
     public HeroDefense(int health, int attackPower) {
-        super(health, (int)(attackPower / 2));
+        super(health, (int)(attackPower / 2)); // Les points d'attaque diminue par un facteur de 2
     }
 
     //--------------------// Autres méthodes //--------------------// 

@@ -66,23 +66,16 @@ public abstract class Hero {
     }
 
     // Méthode statsUpdate
-    public void statsUpdate() {
-        this.attackPower += attackerPowerLevelUp;
-        this.maxHealth += maxHealthLevelUp; // Doit être en premier (avant que l'on réinitialise la vie du héro)
-        this.health = maxHealth;
-    }
+    public abstract void statsUpdate();
+
+    // Méthode decreaseHealth
+    public abstract int decreaseHealth(int damageTaken);
 
     // Méthode experiencePoints
     private static int experiencePoints(int level) {
         int required_exp = (int)((50 + (level + 1) * 20 * Math.pow(1.1, level + 1)) + 0.99999); // Pour prendre l'entier supérieur, on ajoute .99999 (en fait jamais 1 autrement
                                                                                                     // s'il a 98 points d'exp, il levelUp alors qu'il faut pas
         return required_exp;
-    }
-
-    // Méthode decreaseHealth
-    public int decreaseHealth(int damageTaken) { // Appelée lorsqu'il y a combat
-        this.health = getHealth() - damageTaken;
-        return health;
     }
 
     //--------------------// Méthodes d'action du héro //--------------------//

@@ -1,18 +1,19 @@
 public class HeroDefense extends Hero {
 
-    // Constructeur
+    //--------------------// Constructeur //--------------------// 
     public HeroDefense(int health, int attackPower) {
         super(health, (int)(attackPower / 2));
     }
 
-    // Autres méthodes
+    //--------------------// Autres méthodes //--------------------// 
+    // Méthode decreaseHealth
     @Override
     public int decreaseHealth(int enemyAttackPower) {
-        this.health = health - (int)(enemyAttackPower / 2); // Le hero se prend 2 fois moins les points d'attaque de l'ennemi
+        this.health = health - (int)(enemyAttackPower / 2); // Le héro se prend 2 fois moins les points d'attaque de l'ennemi
         return health;
     }
 
-    // -----------------Méthode statsUpdate()-----------------
+    // Méthode statsUpdate
     @Override
     public void statsUpdate() {
         this.maxHealth += maxHealthLevelUp;

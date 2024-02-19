@@ -1,20 +1,8 @@
 public class ArgsProcessor {
     public static void process(String[] args) {
         String[] phrase = makePhrase(args[0]);
-        Hero hero;
         String nom = phrase[0];
-        
-        switch (nom.charAt(0)) {
-            case 'A':
-                hero = new HeroAttaque(Integer.parseInt(phrase[1]), Integer.parseInt(phrase[2])); // Création de l'instance HeroAttaque
-                break;
-            case 'D':
-                hero = new HeroDefense(Integer.parseInt(phrase[1]), Integer.parseInt(phrase[2])); // Création de l'instance HeroDefense
-                break;
-            default:
-                hero = new HeroEquilibre(Integer.parseInt(phrase[1]), Integer.parseInt(phrase[2])); // Création de l'instance HeroEquilibre
-                break;
-        }
+        Hero hero = createHero(phrase, nom); // Creation de l'instance Hero dépendamment du nom
 
         String phraseFinale = "In his quest, " + nom;
         for (int i = 3; i < phrase.length; i++) { // La 3ième position dans le tableau est la première phrase conçernant l'action commis par le héro
@@ -32,7 +20,18 @@ public class ArgsProcessor {
         }
 
         System.out.println(phraseFinale); // On output la phrase finale
-    }  
+    }
+
+    private static Hero createHero(String[] phrase, String nom) {
+        switch (nom.charAt(0)) {
+            case 'A':
+                return new HeroAttaque(Integer.parseInt(phrase[1]), Integer.parseInt(phrase[2]));
+            case 'D':
+                return new HeroDefense(Integer.parseInt(phrase[1]), Integer.parseInt(phrase[2]));
+            default:
+                return new HeroEquilibre(Integer.parseInt(phrase[1]), Integer.parseInt(phrase[2]));
+        }
+    }
 
     private static String[] makePhrase(String args) {
         return args.trim().split(",");

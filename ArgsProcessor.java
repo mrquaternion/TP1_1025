@@ -19,7 +19,9 @@ public class ArgsProcessor {
         String phraseFinale = "In his quest, " + nom;
         for (int i = 3; i < phrase.length; i++) { // La 3ième position dans le tableau est la première phrase conçernant l'action commis par le héro
             doAction(phrase[i], hero);
-            if (hero.getHealth() <= 0) { break; }
+            if (hero.getHealth() <= 0) { 
+                break; 
+            }
         }
 
         // On crée les phrases pour les 2 cas possibles
@@ -60,7 +62,7 @@ public class ArgsProcessor {
                     hero.numberOfEnemiesDefeated++; // On augmente le nombre d'ennemis battus
                     hero.levelUp(); // On améliore le héro
                 }
-            break;
+                break;
 
             case "rested":
                 hero.resting();

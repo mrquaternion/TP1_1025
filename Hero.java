@@ -59,9 +59,9 @@ public abstract class Hero {
     // Méthode levelUp
     public void levelUp() {
         if (experience >= experiencePoints(getLevel())) { // On regarde si le héro peut level up
-            setExperience(0); // On remet les points d'exp du héro à 0
-            setLevel(getLevel() + 1); // On augmente le niveau du héro
-            statsUpdate(); // On augmente les stats du héro
+            this.setExperience(0); // On remet les points d'exp du héro à 0
+            this.setLevel(getLevel() + 1); // On augmente le niveau du héro
+            this.statsUpdate(); // On augmente les stats du héro
         }
     }
 
@@ -81,21 +81,26 @@ public abstract class Hero {
     //--------------------// Méthodes d'action du héro //--------------------//
     // Méthode figthing
     public Boolean fighting(Enemy enemy) {
-        
         while (this.getHealth() > 0 && enemy.getHealth() > 0) {
-            enemy.decreaseHealth(this.getAttackPower()); // Le héro attaque en premier
+            // Le héro attaque en premier
+            enemy.decreaseHealth(this.getAttackPower()); 
+            if (enemy.getHealth() <= 0) { // Vérifie si l'ennemi a toujours des points de vie
+                break; // L'ennemi est mort
+            }
 
-            if (enemy.getHealth() > 0) { // Vérifie si l'ennemi a toujours des points de vie
-                this.decreaseHealth(enemy.getAttackPower()); // L'ennemi attaque par la suite
+            // L'ennemi attaque
+            this.decreaseHealth(enemy.getAttackPower()); 
+            if (this.getHealth() <= 0) { // Vérifie si le héro a toujours des points de vie
+                break; // Le héro est mort
             }
         }
 
         // On regarde si le héro est mort après le combat
-        if (getHealth() <= 0) { 
+        if (this.getHealth() <= 0) { 
             return false; 
         } else {
-            this.experience += enemy.getExperience(); // On ajoute l'experience gagnée suite à la victoire du héro
-            enemy.statsUpdate(); // On update les stats du prochain ennemi (même s'il y en a pas)
+            this.experience += enemy.getExperience(); // Le héro gagne de l'expérience
+            enemy.statsUpdate(); // Les stats du prochain ennemi sont updater
             return true;
         }
     }
@@ -105,8 +110,8 @@ public abstract class Hero {
 
     // Méthode healing
     public void healing(int healingPoint) {
-        int newHealth = getHealth() + healingPoint;
-        if (newHealth >= getMaxHealth()) { // Vérifie que le soin ne depasse pas la limite maxHealth
+        int newHealth = this.getHealth() + healingPoint;
+        if (newHealth >= this.getMaxHealth()) { // Vérifie que le soin ne depasse pas la limite maxHealth
             this.health = maxHealth;
         } else {
             this.health = newHealth;

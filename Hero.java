@@ -5,7 +5,7 @@ public abstract class Hero {
     //--------------------// Attributs privés //--------------------// 
     private int level = 1;
     private int experience = 0;
-    public int numberOfEnemiesDefeated = 0;
+    int numberOfEnemiesDefeated = 0;
 
     //--------------------// Attributs protégés //--------------------// 
     protected int health;
@@ -100,7 +100,7 @@ public abstract class Hero {
             return false; 
         } else {
             this.experience += enemy.getExperience(); // Le héro gagne de l'expérience
-            enemy.updateStatsBasedOnDefeats(this.numberOfEnemiesDefeated); // Les stats du prochain ennemi sont updater
+            this.numberOfEnemiesDefeated++; // On augmente le nombre d'ennemis battus
             return true;
         }
     }

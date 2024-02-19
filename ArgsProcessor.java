@@ -59,7 +59,6 @@ public class ArgsProcessor {
                         return false;
                     }
 
-                    hero.numberOfEnemiesDefeated++; // On augmente le nombre d'ennemis battus
                     hero.levelUp(); // On améliore le héro
                 }
                 break;

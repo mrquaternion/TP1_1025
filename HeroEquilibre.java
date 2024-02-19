@@ -16,7 +16,7 @@ public class HeroEquilibre extends Hero {
     // Méthode statsUpdate
     @Override
     public void statsUpdate() {
-    this.attackPower += attackerPowerLevelUp;
+        this.attackPower += attackerPowerLevelUp;
         this.maxHealth += maxHealthLevelUp; // Doit être en premier (avant que l'on réinitialise la vie du héro)
         this.health = maxHealth;
     }

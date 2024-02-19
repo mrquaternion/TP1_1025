@@ -3,18 +3,16 @@ public class ArgsProcessor {
         String[] phrase = makePhrase(args[0]);
         Hero hero;
         String nom = phrase[0];
-        int health = Integer.parseInt(phrase[1]);
-        int attackPower = Integer.parseInt(phrase[2]);
         
         switch (nom.charAt(0)) {
             case 'A':
-                hero = new HeroAttaque(health, attackPower); // Création de l'instance HeroAttaque
+                hero = new HeroAttaque(Integer.parseInt(phrase[1]), Integer.parseInt(phrase[2])); // Création de l'instance HeroAttaque
                 break;
             case 'D':
-                hero = new HeroDefense(health, attackPower); // Création de l'instance HeroDefense
+                hero = new HeroDefense(Integer.parseInt(phrase[1]), Integer.parseInt(phrase[2])); // Création de l'instance HeroDefense
                 break;
             default:
-                hero = new HeroEquilibre(health, attackPower); // Création de l'instance HeroEquilibre
+                hero = new HeroEquilibre(Integer.parseInt(phrase[1]), Integer.parseInt(phrase[2])); // Création de l'instance HeroEquilibre
                 break;
         }
 
@@ -46,7 +44,6 @@ public class ArgsProcessor {
         // le type d'action est déterminé par le premier mot de la phrase
         switch (phrase[0]) {
             case "fought":
-
                 Enemy enemy = new Enemy(); // On crée l'ennemi ici et non dans la méthode fighting() de Hero autrement une nouvelle instance sera toujours créée
                 
                 for (int i = 0; i < hero.numberOfEnemiesDefeated; i++) { // À chaque phrase, on doit garder les stats de l'instance Enemy
@@ -69,13 +66,11 @@ public class ArgsProcessor {
                 break;
 
             case "healed":
-                int healingPoints = Integer.parseInt(phrase[1]);
-                hero.healing(healingPoints);
+                hero.healing(Integer.parseInt(phrase[1]));
                 break;
 
             case "trained":
-                int attackTrainingBonus = Integer.parseInt(phrase[3]);
-                hero.training(attackTrainingBonus);
+                hero.training(Integer.parseInt(phrase[3]));
                 break;
         }
         return true;

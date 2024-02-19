@@ -100,7 +100,7 @@ public abstract class Hero {
             return false; 
         } else {
             this.experience += enemy.getExperience(); // Le héro gagne de l'expérience
-            enemy.statsUpdate(); // Les stats du prochain ennemi sont updater
+            enemy.updateStatsBasedOnDefeats(this.numberOfEnemiesDefeated); // Les stats du prochain ennemi sont updater
             return true;
         }
     }

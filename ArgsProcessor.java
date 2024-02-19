@@ -44,22 +44,23 @@ public class ArgsProcessor {
         // le type d'action est déterminé par le premier mot de la phrase
         switch (phrase[0]) {
             case "fought":
-                Enemy enemy = new Enemy(); // On crée l'ennemi ici et non dans la méthode fighting() de Hero autrement une nouvelle instance sera toujours créée
-                
-                for (int i = 0; i < hero.numberOfEnemiesDefeated; i++) { // À chaque phrase, on doit garder les stats de l'instance Enemy
-                    enemy.statsUpdate();
+                int numberOfEnemies = Integer.parseInt(phrase[1]); // On stock le nombre d'ennemi dans la phrase
+                if (numberOfEnemies <= 0) {
+                    throw new IllegalArgumentException("Il n'y a aucun ennemi à combattre.");
                 }
-                
-                int numberOfEnemies = Integer.parseInt(phrase[1]);
-                if (numberOfEnemies > 0) {
-                    for (int i = 1; i <= numberOfEnemies; i++) { // Combat jusqu'à temps que tous les ennemis soient battus 
-                        if (hero.fighting(enemy)) { // Combat
-                            hero.numberOfEnemiesDefeated++; // On itère
-                            hero.levelUp(); // Level up apres tous les combats
-                        } else { return false; } // Si le héro est mort alors on arrête tout
-                    } 
-                } else { throw new IllegalArgumentException("Il n'y a aucun ennemi à combattre."); }
-                break;
+
+                for (int i = 0; i < numberOfEnemies; i++) {
+                    Enemy enemy = new Enemy(); // Création d'un nouvel ennemi
+                    enemy.updateStatsBasedOnDefeats(hero.numberOfEnemiesDefeated); // On améliore les stats de la nouvelle instance
+
+                    if (!hero.fighting(enemy)) { // Héro meurt -> on stop
+                        return false;
+                    }
+
+                    hero.numberOfEnemiesDefeated++; // On augmente le nombre d'ennemis battus
+                    hero.levelUp(); // On améliore le héro
+                }
+            break;
 
             case "rested":
                 hero.resting();

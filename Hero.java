@@ -58,7 +58,7 @@ public abstract class Hero {
     //--------------------// Autres méthodes //--------------------//
     // Méthode levelUp
     public void levelUp() {
-        if (experience >= experiencePoints(getLevel())) { // On regarde si le héro peut level up
+        if (experience >= experiencePoints(this.getLevel()) && level < 99) { // On regarde si le héro peut level up et s'il ne dépasse pas le niveau 99
             this.setExperience(0); // On remet les points d'exp du héro à 0
             this.setLevel(getLevel() + 1); // On augmente le niveau du héro
             this.statsUpdate(); // On augmente les stats du héro

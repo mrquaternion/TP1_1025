@@ -7,9 +7,9 @@ public class ArgsProcessor {
 
         // On crée les phrases pour les 2 cas possibles
         if (hero.getHealth() <= 0) {
-            System.out.println("In his quest, " + phrase[0] + " died after beating " + hero.numberOfEnemiesDefeated + " enemies and attaining level " + hero.getLevel() + "!");
+            System.out.println("In his quest, " + phrase[0] + " died after beating " + Hero.numberOfEnemiesDefeated + " enemies and attaining level " + hero.getLevel() + "!");
         } else {
-            System.out.println("In his quest, " + phrase[0] + " beat " + hero.numberOfEnemiesDefeated + " enemies, attained level " + hero.getLevel() + " and survived with " + hero.health + " HP!");
+            System.out.println("In his quest, " + phrase[0] + " beat " + Hero.numberOfEnemiesDefeated + " enemies, attained level " + hero.getLevel() + " and survived with " + hero.health + " HP!");
         }
     }
 
@@ -49,9 +49,9 @@ public class ArgsProcessor {
                     throw new IllegalArgumentException("Il n'y a aucun ennemi à combattre.");
                 }
 
+                Enemy enemy = new Enemy(); // Création d'un nouvel ennemi
                 for (int i = 0; i < numberOfEnemies; i++) {
-                    Enemy enemy = new Enemy(); // Création d'un nouvel ennemi
-                    enemy.updateStatsBasedOnDefeats(hero.numberOfEnemiesDefeated); // On améliore les stats de la nouvelle instance
+                    enemy.updateStatsBasedOnDefeats(Hero.numberOfEnemiesDefeated); // On améliore les stats de la nouvelle instance
 
                     if (!hero.fighting(enemy)) { // Héro meurt -> on stop
                         return false;

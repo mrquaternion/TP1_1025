@@ -9,7 +9,7 @@ public class HeroEquilibre extends Hero {
     // Méthode decreaseHealth
     @Override
     public int decreaseHealth(int damageTaken) {
-        this.health = getHealth() - damageTaken;
+        this.health -= damageTaken;
         return health;
     }
 

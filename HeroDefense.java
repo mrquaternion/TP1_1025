@@ -9,7 +9,7 @@ public class HeroDefense extends Hero {
     // Méthode decreaseHealth
     @Override
     public int decreaseHealth(int enemyAttackPower) {
-        this.health = health - (int)(enemyAttackPower / 2); // Le héro se prend 2 fois moins les points d'attaque de l'ennemi
+        this.health -= (int)(enemyAttackPower / 2); // Le héro se prend 2 fois moins les points d'attaque de l'ennemi
         return health;
     }
 

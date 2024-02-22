@@ -1,16 +1,15 @@
 public class ArgsProcessor {
     public static void process(String[] args) {
         String[] phrase = makePhrase(args[0]);
-        String nom = phrase[0];
 
-        Hero hero = createHero(phrase, nom); // Creation de l'instance Hero dépendamment du nom
+        Hero hero = createHero(phrase, phrase[0]); // Creation de l'instance Hero dépendamment du nom
         readActions(phrase, hero);
 
         // On crée les phrases pour les 2 cas possibles
         if (hero.getHealth() <= 0) {
-            System.out.println("In his quest, " + nom + " died after beating " + hero.numberOfEnemiesDefeated + " enemies and attaining level " + hero.getLevel() + "!");
+            System.out.println("In his quest, " + phrase[0] + " died after beating " + hero.numberOfEnemiesDefeated + " enemies and attaining level " + hero.getLevel() + "!");
         } else {
-            System.out.println("In his quest, " + nom + " beat " + hero.numberOfEnemiesDefeated + " enemies, attained level " + hero.getLevel() + " and survived with " + hero.health + " HP!");
+            System.out.println("In his quest, " + phrase[0] + " beat " + hero.numberOfEnemiesDefeated + " enemies, attained level " + hero.getLevel() + " and survived with " + hero.health + " HP!");
         }
     }
 

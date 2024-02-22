@@ -48,7 +48,7 @@ public abstract class Hero {
     }
 
     private void setAttackPower(int attackPower) {
-        if (attackPower > 0) {
+        if (attackPower >= 0) { // Si le héro ne s'entraine pas dès le début, il meurt dès le premier tour, sinon il peut survivre
             this.attackPower = attackPower;
         } else {
             throw new IllegalArgumentException("Les points d'attaque du héro doivent être supérieur à 0.");

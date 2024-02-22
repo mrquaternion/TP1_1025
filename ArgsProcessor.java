@@ -2,26 +2,19 @@ public class ArgsProcessor {
     public static void process(String[] args) {
         String[] phrase = makePhrase(args[0]);
         String nom = phrase[0];
-        Hero hero = createHero(phrase, nom); // Creation de l'instance Hero dépendamment du nom
 
-        String phraseFinale = "In his quest, " + nom;
-        for (int i = 3; i < phrase.length; i++) { // La 3ième position dans le tableau est la première phrase conçernant l'action commis par le héro
-            doAction(phrase[i], hero);
-            if (hero.getHealth() <= 0) { 
-                break; 
-            }
-        }
+        Hero hero = createHero(phrase, nom); // Creation de l'instance Hero dépendamment du nom
+        readActions(phrase, hero);
 
         // On crée les phrases pour les 2 cas possibles
         if (hero.getHealth() <= 0) {
-            phraseFinale += " died after beating " + hero.numberOfEnemiesDefeated + " enemies and attaining level " + hero.getLevel() + "!";
+            System.out.println("In his quest, " + nom + " died after beating " + hero.numberOfEnemiesDefeated + " enemies and attaining level " + hero.getLevel() + "!");
         } else {
-            phraseFinale += " beat " + hero.numberOfEnemiesDefeated + " enemies, attained level " + hero.getLevel() + " and survived with " + hero.health + " HP!";
+            System.out.println("In his quest, " + nom + " beat " + hero.numberOfEnemiesDefeated + " enemies, attained level " + hero.getLevel() + " and survived with " + hero.health + " HP!");
         }
-
-        System.out.println(phraseFinale); // On output la phrase finale
     }
 
+    // Méthode createHero
     private static Hero createHero(String[] phrase, String nom) {
         switch (nom.charAt(0)) {
             case 'A':
@@ -30,6 +23,16 @@ public class ArgsProcessor {
                 return new HeroDefense(Integer.parseInt(phrase[1]), Integer.parseInt(phrase[2]));
             default:
                 return new HeroEquilibre(Integer.parseInt(phrase[1]), Integer.parseInt(phrase[2]));
+        }
+    }
+
+    // Méthode readActions
+    private static void readActions(String[] sentence, Hero hero) {
+        for (int i = 3; i < sentence.length; i++) { // 3ième position dans le tableau est la première phrase conçernant l'action 
+            doAction(sentence[i], hero);
+            if (hero.getHealth() <= 0) { 
+                break; 
+            }
         }
     }
 

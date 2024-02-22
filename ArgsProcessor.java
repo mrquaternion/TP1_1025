@@ -28,10 +28,7 @@ public class ArgsProcessor {
     // Méthode readActions
     private static void readActions(String[] sentence, Hero hero) {
         for (int i = 3; i < sentence.length; i++) { // 3ième position dans le tableau est la première phrase conçernant l'action 
-            doAction(sentence[i], hero);
-            if (hero.getHealth() <= 0) { 
-                break; 
-            }
+            if (doAction(sentence[i], hero) == false) { break; }
         }
     }
 

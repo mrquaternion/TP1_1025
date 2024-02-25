@@ -28,6 +28,7 @@ public class Enemy {
     public int getAttackPower() { return this.attackPower; }
 
     //--------------------// Setters //--------------------//
+    // Pas vraiment besoin parce que on ne modifie rien de l'ennemi en dehors de cette classe
   
 
     //--------------------// Autres méthodes //--------------------//

@@ -18,6 +18,6 @@ public class HeroAttaque extends Hero {
     public void statsUpdate() {
         this.maxHealth += maxHealthLevelUp;
         this.health = maxHealth;
-        this.attackPower += (attackerPowerLevelUp * 2); // On a pas le même problème qu'avec HeroDefense
+        this.attackPower += (attackerPowerLevelUp * 2); // On multiplie par deux les points d'attaque
     }
 }

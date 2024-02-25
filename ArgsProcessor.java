@@ -15,6 +15,7 @@ public class ArgsProcessor {
 
     // Méthode createHero
     private static Hero createHero(String[] phrase, String nom) {
+        // On gère le type d'instance créé selon le premier caractère du nom du héro
         switch (nom.charAt(0)) {
             case 'A':
                 return new HeroAttaque(Integer.parseInt(phrase[1]), Integer.parseInt(phrase[2]));
@@ -27,6 +28,7 @@ public class ArgsProcessor {
 
     // Méthode readActions
     private static void readActions(String[] sentence, Hero hero) {
+        // Ici on procède à la lecture de toute les actions
         for (int i = 3; i < sentence.length; i++) { // 3ième position dans le tableau est la première phrase conçernant l'action 
             if (doAction(sentence[i], hero) == false) { break; }
         }

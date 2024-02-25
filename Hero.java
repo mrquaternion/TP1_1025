@@ -18,9 +18,9 @@ public abstract class Hero {
     
     //--------------------// Constructeur //--------------------//
     public Hero(int health, int attackPower) {
-        this.health = health;
+        setHealth(health);
         this.maxHealth = health;
-        this.attackPower = attackPower;
+        setAttackPower(attackPower);
     }
 
     //--------------------// Getters //--------------------//
@@ -39,21 +39,21 @@ public abstract class Hero {
 
     // private void setExperience(int experience) { this.experience = experience; }
 
-    /* private void setHealth(int health) {
+    private void setHealth(int health) {
         if (health > 0) {
             this.health = health;
         } else {
             throw new IllegalArgumentException("Les points de vie du héro doivent être supérieur à 0.");
         }
-    } */
+    }
 
-    /* private void setAttackPower(int attackPower) {
+    private void setAttackPower(int attackPower) {
         if (attackPower >= 0) { // Si le héro ne s'entraine pas dès le début, il meurt dès le premier tour, sinon il peut survivre
             this.attackPower = attackPower;
         } else {
             throw new IllegalArgumentException("Les points d'attaque du héro doivent être supérieur à 0.");
         }
-    } */
+    }
 
     //--------------------// Autres méthodes //--------------------//
     // Méthode levelUp
@@ -73,7 +73,7 @@ public abstract class Hero {
 
     // Méthode experiencePoints
     private int experiencePoints() {
-        int required_exp = (int)((50 + (this.level + 1) * 20 * Math.pow(1.1, this.level + 1)) + 0.99999); // Pour prendre l'entier supérieur, on ajoute .99999 (en fait jamais 1 autrement
+        int required_exp = (int)((50 + (level + 1) * 20 * Math.pow(1.1, level + 1)) + 0.99999); // Pour prendre l'entier supérieur, on ajoute .99999 (en fait jamais 1 autrement
                                                                                                     // s'il a 98 points d'exp, il levelUp alors qu'il faut pas
         return required_exp;
     }

@@ -119,5 +119,5 @@ public abstract class Hero {
     }
 
     // Méthode training
-    public void training(int attackTrainingBonus) { this.attackPower += attackTrainingBonus; } // Augmente les points d'attaque du Hero
+    public abstract void training(int attackTrainingBonus); // Augmente les points d'attaque du Hero
 }

@@ -20,4 +20,8 @@ public class HeroAttaque extends Hero {
         this.health = maxHealth;
         this.attackPower += (attackerPowerLevelUp * 2); // On multiplie par deux les points d'attaque
     }
+
+    // Méthode training
+    @Override
+    public void training(int attackTrainingBonus) { this.attackPower += (attackTrainingBonus * 2); }
 }
